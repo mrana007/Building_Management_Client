@@ -6,7 +6,7 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const Banner = () => {
   return (
-    <div>
+    <div className="mb-28">
       <AutoplaySlider
         play={true}
         cancelOnInteraction={false} // should stop playing on user interaction

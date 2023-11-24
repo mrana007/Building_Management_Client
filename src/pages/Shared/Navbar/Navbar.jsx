@@ -47,7 +47,7 @@ const Navbar = () => {
         <div className="navbar-end md:pr-16">
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
+              <div className="w-16 rounded-full">
                 <img src="https://i.ibb.co/cxddwLx/placeholder.jpg" alt="" />
               </div>
             </label>
