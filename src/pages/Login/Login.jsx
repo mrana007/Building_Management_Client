@@ -1,10 +1,54 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const { signIn } = useContext(AuthContext);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    signIn(email, password)
+    .then((result) => {
+      const user = result.user;
+      console.log(user);
+      Swal.fire({
+        icon: "success",
+        title: "Login Successfully",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
+    })
+    .catch(error=>{
+        console.log(error);
+        Swal.fire({
+            icon: "error",
+            text: "Wrong user information!"
+          });
+      })
+  };
+
   return (
     <>
       <div
-        className="hero min-h-screen md:py-20"
+        className="hero min-h-screen mt-16 md:py-20"
         style={{
           backgroundImage: "url(https://i.ibb.co/rMZKdBw/12188678-4907157.jpg)",
         }}
@@ -18,7 +62,7 @@ const Login = () => {
           </div>
           <div className="card md:w-1/2 max-w-sm">
             <h1 className="text-5xl text-center pt-3 font-bold">Login</h1>
-            <form className="card-body">
+            <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -35,13 +79,21 @@ const Login = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
+                <div className="relative input input-bordered">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Enter your password"
-                  className="input input-bordered"
+                  className="pt-2"
                   required
                 />
+                <span
+                  className="absolute top-3 right-3"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+                </div>
               </div>
               <div className="form-control mt-3">
                 <input
