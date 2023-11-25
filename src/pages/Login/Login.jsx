@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -7,6 +7,10 @@ import Swal from "sweetalert2";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -20,21 +24,24 @@ const Login = () => {
       Swal.fire({
         icon: "success",
         title: "Login Successfully",
-        showClass: {
-          popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `
-        },
-        hideClass: {
-          popup: `
-            animate__animated
-            animate__fadeOutDown
-            animate__faster
-          `
-        }
+        showConfirmButton: false,
+        timer: 2000
+        // showClass: {
+        //   popup: `
+        //     animate__animated
+        //     animate__fadeInUp
+        //     animate__faster
+        //   `
+        // },
+        // hideClass: {
+        //   popup: `
+        //     animate__animated
+        //     animate__fadeOutDown
+        //     animate__faster
+        //   `
+        // }
       });
+      navigate(from, {replace: true});
     })
     .catch(error=>{
         console.log(error);

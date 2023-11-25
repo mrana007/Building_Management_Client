@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,7 +14,12 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const {createUser} = useContext(AuthContext);
+// create user
+  const { createUser, updatedUserProfile} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const onSubmit = (data) => {
     console.log(data);
@@ -21,6 +27,19 @@ const SignUp = () => {
     .then(result=>{
         const loggedUser = result.user;
         console.log(loggedUser);
+        updatedUserProfile(data.name, data.photoURL)
+        .then(()=>{
+            reset();
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'User created successfully',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        navigate(from, {replace: true});
+        })
+        .catch(error =>console.log(error))
     })
   };
 
@@ -63,11 +82,14 @@ const SignUp = () => {
                 </label>
                 <input
                   type="text"
-                  name="name"
+                  {...register("photoURL", { required: true })}
+                  name="photoURL"
                   placeholder="Enter photo url"
                   className="input input-bordered"
-                  required
                 />
+                {errors.name && (
+                  <span className="text-red-600">Photo URL is required</span>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
