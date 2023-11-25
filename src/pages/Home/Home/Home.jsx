@@ -4,6 +4,7 @@ import Footer from "../../Shared/Footer/Footer";
 import AboutBuilding from "../AboutBuilding/AboutBuilding";
 import ApartmentLocation from "../ApartmentLocation/ApartmentLocation";
 import Banner from "../Banner/Banner";
+import Coupons from "../Coupons/Coupons";
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
                 <title>Quantum Tower | Home</title>
             </Helmet>
             <Banner />
+            <Coupons />
             <AboutBuilding />
             <ApartmentLocation />
             <Footer />

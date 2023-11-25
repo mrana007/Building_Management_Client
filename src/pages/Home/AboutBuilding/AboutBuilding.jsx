@@ -10,7 +10,7 @@ const AboutBuilding = () => {
         <div className=" justify-center md:px-28 py-32">
           <div className="bg-black bg-opacity-30 space-y-4 px-4 md:px-40 py-24">
             <h3 className="text-5xl uppercase text-white">
-              Apartment Description
+              Building Description
             </h3>
             <p className="text-white">
               Apartment Name: Quantum Tower <br />
