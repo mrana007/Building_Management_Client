@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -169,9 +170,9 @@ const SignUp = () => {
                 </Link>
               </small>
             </p>
-            <div className="my-2 text-center text-xl font-medium">
-              <p className="mb-2">Or Sign in with</p>
-              {/* <SocialLogin></SocialLogin> */}
+              <div className="my-2 text-center text-xl font-medium">
+              <p className="mb-2">Or Sign up with</p>
+              <GoogleLogin></GoogleLogin>
             </div>
           </div>
         </div>

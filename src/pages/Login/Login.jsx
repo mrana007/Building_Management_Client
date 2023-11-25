@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,20 +27,6 @@ const Login = () => {
         title: "Login Successfully",
         showConfirmButton: false,
         timer: 2000
-        // showClass: {
-        //   popup: `
-        //     animate__animated
-        //     animate__fadeInUp
-        //     animate__faster
-        //   `
-        // },
-        // hideClass: {
-        //   popup: `
-        //     animate__animated
-        //     animate__fadeOutDown
-        //     animate__faster
-        //   `
-        // }
       });
       navigate(from, {replace: true});
     })
@@ -63,7 +50,7 @@ const Login = () => {
         <div className="hero-content flex-col md:flex-row shadow-xl rounded-lg shadow-gray-400">
           <div className="text-center md:w-1/2 lg:text-left">
             <img
-              src="https://i.ibb.co/rv4Lg48/5202813-Mobile-removebg-preview.png"
+              src="https://i.ibb.co/tqGY2ny/login.png"
               alt="login"
             />
           </div>
@@ -120,7 +107,7 @@ const Login = () => {
             </p>
             <div className="my-2 text-center text-xl font-medium">
               <p className="mb-2">Or Sign in with</p>
-              {/* <SocialLogin></SocialLogin> */}
+              <GoogleLogin></GoogleLogin>
             </div>
           </div>
         </div>
