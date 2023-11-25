@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -22,9 +22,8 @@ const GoogleLogin = () => {
     <div>
       <button
         onClick={handleGoogleSignIn}
-        className="btn btn-outline font-semibold text-xl px-10"
-      >
-        <FaGoogle className="text-blue-500"></FaGoogle> - Google
+        className="btn btn-outline font-semibold text-xl px-10">
+        <FcGoogle className="text-3xl"></FcGoogle> - Google
       </button>
     </div>
   );

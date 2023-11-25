@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -46,6 +47,9 @@ const SignUp = () => {
 
   return (
     <>
+        <Helmet>
+            <title>Quantum Tower | Sign Up</title>
+        </Helmet>
       <div
         className="hero min-h-screen mt-16 md:py-20"
         style={{

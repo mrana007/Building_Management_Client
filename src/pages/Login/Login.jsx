@@ -4,6 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -41,6 +42,9 @@ const Login = () => {
 
   return (
     <>
+        <Helmet>
+            <title>Quantum Tower | Login</title>
+        </Helmet>
       <div
         className="hero min-h-screen mt-16 md:py-20"
         style={{
