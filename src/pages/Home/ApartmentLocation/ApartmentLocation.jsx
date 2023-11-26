@@ -1,4 +1,5 @@
 import { CiLocationOn } from "react-icons/ci";
+import { Link } from "react-router-dom";
 const ApartmentLocation = () => {
   return (
     <div className="max-w-screen-xl mx-auto">
@@ -20,6 +21,7 @@ const ApartmentLocation = () => {
               Discover long-term rentals that feel like home for stays of a
               month or longer.
             </p>
+            <Link to="/gulshan1">
             <div className="border border-gray-400 rounded-lg px-2 py-4">
               <h2 className="flex items-center text-lg font-medium">
                 <CiLocationOn className="text-2xl font-extrabold mr-2" />
@@ -27,6 +29,7 @@ const ApartmentLocation = () => {
               </h2>
               <p>Gulshan, Dhaka, Bangladesh</p>
             </div>
+            </Link>
           </div>
         </div>
         <img

@@ -5,16 +5,24 @@ import Apartment from "../pages/Apartment/Apartment";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import DashBoard from "../Layout/DashBoard";
+import UserProfile from "../pages/Dashboard/UserProfile/UserProfile";
+import PrivateRoute from "./PrivateRoute";
+import Location from "../pages/Home/ApartmentLocation/Location";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main></Main>,
+    element: <Main />,
     errorElement: <ErrorPage />,
     children: [
         {
             path: '/',
             element: <Home />
+        },
+        {
+          path: '/gulshan1',
+          element: <Location />
         },
         {
           path: "login",
@@ -30,4 +38,14 @@ export const router = createBrowserRouter([
         }
     ]
   },
+  {
+    path: "dashboard",
+    element: <PrivateRoute><DashBoard /></PrivateRoute>,
+    children: [
+      {
+        path: "userProfile",
+        element: <PrivateRoute><UserProfile /></PrivateRoute>
+      } 
+    ]
+  }
 ]);
