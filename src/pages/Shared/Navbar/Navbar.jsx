@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
@@ -11,23 +11,14 @@ const Navbar = () => {
       }
   const navOptions = (
     <>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/apartment">Apartment</Link></li>
-      
-      {
-        user ? <>
-        {/* <span>{user?.displayName}</span> */}
-        <button onClick={handleLogOut} className=" btn-ghost">Log Out</button>
-        </> : <>
-        <li><Link to="/login">Login</Link></li>
-        </>
-      }
+      <NavLink to="/" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active bg-green-800 text-white font-semibold px-4 py-2 rounded" : "px-4 py-2"}>Home</NavLink>
+      <NavLink to="/apartment" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active bg-green-800 text-white font-semibold px-4 py-2 rounded" : "px-4 py-2 font-medium"}>Apartment</NavLink>
     </>
   );
 
   return (
     <>
-      <div className="navbar top-0 fixed z-10 bg-opacity-30 bg-black text-white">
+      <div className="navbar top-0 fixed z-10 bg-opacity-40 bg-black text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -65,21 +56,35 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-16 rounded-full">
-                <img src="https://i.ibb.co/cxddwLx/placeholder.jpg" alt="" />
+                {
+                  user?.email ? <>
+                  <img src={user?.photoURL} alt="" />
+                  </>
+                  :
+                  <>
+                  <img src="https://i.ibb.co/cxddwLx/placeholder.jpg" alt="" />
+                  </>
+                }
               </div>
             </label>
             <ul
               tabIndex={0}
               className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-black bg-opacity-40 text-white rounded-box w-52">
-              <li>
-                <p className="justify-between">Profile</p>
-              </li>
-              <li>
-                <Link to="/dashboard">DashBoard</Link>
-              </li>
-              <li>
-                <button>Logout</button>
-              </li>
+              {
+                user?.email ? <>
+                  <p className="justify-between pl-3">{user?.displayName}</p>
+                <li>
+                  <Link to="/dashboard">DashBoard</Link>
+                </li>
+                <li>
+                  <button onClick={handleLogOut}>Logout</button>
+                </li>
+                </>
+                : 
+                <>
+                <li><Link to="/login">Login</Link></li>
+                </>
+              }
             </ul>
           </div>
         </div>
