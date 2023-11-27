@@ -3,9 +3,12 @@ import { FaHome, FaPen, FaUser, FaUsers } from "react-icons/fa";
 import { BiSolidCoupon } from "react-icons/bi";
 import { MdDashboard } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
+// import useAdmin from "../hooks/useAdmin";
 
 const DashBoard = () => {
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    console.log(isAdmin);
 
     return (
         <>
@@ -18,7 +21,7 @@ const DashBoard = () => {
                 <ul className="menu p-4 text-xl">
                     {
                         isAdmin ? <>
-                        <h2 className="flex items-center text-xl text-center font-bold p-4 "> <MdDashboard className="mr-2 text-3xl" /> Admin Dashboard</h2>
+                        <h2 className="flex items-center text-lg text-red-200 text-center font-semibold p-4 "> <MdDashboard className="mr-2 text-3xl text-orange-300" /> Admin Dashboard</h2>
                         <li>
                             <NavLink to="/dashboard/adminProfile"> <FaUser /> Admin Profile</NavLink>
                         </li>
