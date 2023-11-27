@@ -6,8 +6,10 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -31,15 +33,26 @@ const SignUp = () => {
         console.log(loggedUser);
         updatedUserProfile(data.name, data.photoURL)
         .then(()=>{
-            reset();
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'User created successfully',
-          showConfirmButton: false,
-          timer: 2000
-        });
-        navigate(from, {replace: true});
+          // create user entry in the database
+          const usersInfo ={
+            name: data.name,
+            email: data.email
+          }
+          axiosPublic.post('/users', usersInfo)
+          .then(res=>{
+            if(res.data.insertedId){
+              reset();
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'User added to the database successfully',
+              showConfirmButton: false,
+              timer: 2000
+          });
+          navigate(from, {replace: true});
+            }
+          })
+          
         })
         .catch(error =>console.log(error))
     })
