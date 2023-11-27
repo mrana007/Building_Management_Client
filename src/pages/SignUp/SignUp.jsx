@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
@@ -19,11 +19,10 @@ const SignUp = () => {
   } = useForm();
 
 // create user
-  const { createUser, updatedUserProfile} = useContext(AuthContext);
+  const { createUser, updatedUserProfile, logOut} = useContext(AuthContext);
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const from = location.state?.from?.pathname || "/";
+  // const location = useLocation();
+  // const from = location.state?.from?.pathname || "/";
 
   const onSubmit = (data) => {
     console.log(data);
@@ -36,7 +35,8 @@ const SignUp = () => {
           // create user entry in the database
           const usersInfo ={
             name: data.name,
-            email: data.email
+            email: data.email,
+            role: 'user'
           }
           axiosPublic.post('/users', usersInfo)
           .then(res=>{
@@ -49,7 +49,8 @@ const SignUp = () => {
               showConfirmButton: false,
               timer: 2000
           });
-          navigate(from, {replace: true});
+          logOut();
+          navigate('/login');
             }
           })
           

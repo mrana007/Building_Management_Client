@@ -8,6 +8,7 @@ const UserProfile = () => {
     <Helmet>
         <title>Quantum Tower | Dashboard | User Profile</title>
     </Helmet>
+        <h2 className="text-6xl text-center font-extrabold mb-4 md:my-14">User Dashboard</h2>
     <div className="flex flex-col md:flex-row justify-center">
       <div className="border border-black-200 bg-red-300 rounded p-6 md:p-16">
         <img className="rounded-full justify-center mx-auto" src={user?.photoURL} alt="" />

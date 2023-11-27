@@ -9,6 +9,9 @@ import DashBoard from "../Layout/DashBoard";
 import UserProfile from "../pages/Dashboard/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
 import Location from "../pages/Home/ApartmentLocation/Location";
+import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
+import AgreementsRequest from "../pages/Dashboard/Admin/AgreementsRequest";
+import ManageMembers from "../pages/Dashboard/Admin/ManageMembers";
 
 export const router = createBrowserRouter([
   {
@@ -45,7 +48,21 @@ export const router = createBrowserRouter([
       {
         path: "userProfile",
         element: <PrivateRoute><UserProfile /></PrivateRoute>
-      } 
+      },
+      // admin only routes
+      {
+        path: 'adminProfile',
+        element: <AdminProfile />
+      },
+      {
+        path: 'manageMembers',
+        element: <ManageMembers />
+      },
+      {
+        path: 'agreementsRequest',
+        element: <AgreementsRequest />
+
+      }
     ]
   }
 ]);
