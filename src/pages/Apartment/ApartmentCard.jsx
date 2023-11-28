@@ -31,7 +31,7 @@ const ApartmentCard = ({ apartment }) => {
         }
         axiosSecure.post('/agreements', agreementData)
         .then(res=>{
-            console.log(res.data)
+            // console.log(res.data)
             if(res.data.insertedId){
                 Swal.fire({
                     position: "top-end",
@@ -85,6 +85,15 @@ const ApartmentCard = ({ apartment }) => {
           </p>
         </div>
         <div className="p-6 pt-1">
+          {
+          user?.role==='user' ?
+          <>
+          <button className="disabled: block w-full select-none rounded-lg bg-green-800 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+            data-ripple-light="true">Agreement</button>
+          </>
+          :                  
+          <>
           <button
             onClick={()=>handleAgreement(apartment)}
             className="block w-full select-none rounded-lg bg-green-800 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
@@ -92,6 +101,9 @@ const ApartmentCard = ({ apartment }) => {
             data-ripple-light="true">
             Agreement
           </button>
+          </>
+            
+          }
         </div>
       </div>
     </div>

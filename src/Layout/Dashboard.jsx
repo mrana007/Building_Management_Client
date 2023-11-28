@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { FaHome, FaPen, FaUser, FaUsers } from "react-icons/fa";
 import { BiSolidCoupon } from "react-icons/bi";
 import { MdDashboard } from "react-icons/md";
+import { GrAnnounce } from "react-icons/gr";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 // import useAdmin from "../hooks/useAdmin";
@@ -29,6 +30,9 @@ const DashBoard = () => {
                             <NavLink to="/dashboard/manageMembers"> <FaUsers /> Manage Members</NavLink>
                         </li>
                         <li>
+                            <NavLink to="/dashboard/adminAnnouncements"><GrAnnounce /> Announcements</NavLink>
+                        </li>
+                        <li>
                             <NavLink to="/dashboard/agreementsRequest"> <FaPen /> Agreement Request</NavLink>
                         </li>
                         <li>
@@ -37,6 +41,8 @@ const DashBoard = () => {
                         </>
                          : 
                          <>
+                         <h2 className="flex items-center text-lg text-orange-500 text-center font-semibold p-4 "> <MdDashboard className="mr-2 text-3xl text-white" /> User Dashboard <br />
+                         </h2>
                          <li>
                             <NavLink to="/dashboard/userProfile"> <FaUser />  Profile</NavLink>
                          </li>

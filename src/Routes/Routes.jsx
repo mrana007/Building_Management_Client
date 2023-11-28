@@ -12,6 +12,7 @@ import Location from "../pages/Home/ApartmentLocation/Location";
 import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
 import AgreementsRequest from "../pages/Dashboard/Admin/AgreementsRequest";
 import ManageMembers from "../pages/Dashboard/Admin/ManageMembers";
+import MakeAnnouncements from "../pages/Dashboard/Admin/MakeAnnouncements";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
       {
         path: 'adminProfile',
         element: <AdminProfile />
+      },
+      {
+        path: 'adminAnnouncements',
+        element: <MakeAnnouncements />
       },
       {
         path: 'manageMembers',
