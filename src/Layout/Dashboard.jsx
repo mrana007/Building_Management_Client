@@ -5,10 +5,16 @@ import { MdDashboard } from "react-icons/md";
 import { GrAnnounce } from "react-icons/gr";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
+import useUsers from "../hooks/useUsers";
+import useAuth from "../hooks/useAuth";
 
 const DashBoard = () => {
+    const {user} = useAuth();
     const [isAdmin] = useAdmin();
-    // console.log(isAdmin);
+    const [users] = useUsers();
+    const members = users.filter(usr=> usr.role == "member" && usr.email == user.email);
+    // console.log(members);
+    const isUser = users.filter(usr=> usr.role == "user" && usr.email == user.email)
 
     return (
         <>
@@ -19,6 +25,24 @@ const DashBoard = () => {
             {/* dashboard side bar */}
             <div className="w-72 mb-4 min-h-full md:min-h-screen bg-green-700 mr-3 rounded-xl text-white">
                 <ul className="menu p-4 text-xl">
+                    {members.length >0 ? <>
+                    <h2 className="flex items-center text-lg text-red-200 text-center font-semibold p-4 "> <MdDashboard className="mr-2 text-3xl text-orange-300" /> Member Dashboard</h2>
+                    <li>
+                        <NavLink to="/dashboard/memberProfile"> <FaUser /> Member Profile</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard/makePayment"> <FaUser /> Make Payment</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard/paymentHistory"> <FaUser /> Payment History</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard/announcements"> <FaUser /> Announcements</NavLink>
+                    </li>
+                    </>
+                    :
+                    <></>
+                    }
                     {
                         isAdmin ? <>
                         <h2 className="flex items-center text-lg text-red-200 text-center font-semibold p-4 "> <MdDashboard className="mr-2 text-3xl text-orange-300" /> Admin Dashboard</h2>
@@ -40,7 +64,12 @@ const DashBoard = () => {
                         </>
                          : 
                          <>
-                         <h2 className="flex items-center text-lg text-orange-500 text-center font-semibold p-4 "> <MdDashboard className="mr-2 text-3xl text-white" /> User Dashboard <br />
+                         
+                         </>
+                    }
+                    {
+                        isUser.length>0 ?<>
+                        <h2 className="flex items-center text-lg text-orange-500 text-center font-semibold p-4 "> <MdDashboard className="mr-2 text-3xl text-white" /> User Dashboard <br />
                          </h2>
                          <li>
                             <NavLink to="/dashboard/userProfile"> <FaUser />  Profile</NavLink>
@@ -48,7 +77,9 @@ const DashBoard = () => {
                         <li>
                              <NavLink to="/dashboard/announcements">Announcements</NavLink>
                         </li>
-                         </>
+                        </> 
+                        :
+                        <></>
                     }
                     {/* shared nav link */}
                     <div className="divider divider-success"></div>

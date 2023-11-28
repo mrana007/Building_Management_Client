@@ -15,6 +15,7 @@ import ManageMembers from "../pages/Dashboard/Admin/ManageMembers";
 import MakeAnnouncements from "../pages/Dashboard/Admin/MakeAnnouncements";
 import Announcements from "../pages/Dashboard/UserProfile/Announcements";
 import ManageCoupons from "../pages/Dashboard/Admin/ManageCoupons";
+import MemberProfile from "../pages/Dashboard/Member/MemberProfile";
 
 export const router = createBrowserRouter([
   {
@@ -55,29 +56,34 @@ export const router = createBrowserRouter([
       },
       {
         path: "announcements",
-        element: <Announcements />
+        element: <PrivateRoute><Announcements /></PrivateRoute>
+      },
+      // member dashboard
+      {
+        path: "memberProfile",
+        element: <PrivateRoute><MemberProfile /></PrivateRoute>
       },
       // admin only routes
       {
         path: 'adminProfile',
-        element: <AdminProfile />
+        element: <PrivateRoute><AdminProfile /></PrivateRoute>
       },
       {
         path: 'adminAnnouncements',
-        element: <MakeAnnouncements />
+        element: <PrivateRoute><MakeAnnouncements /></PrivateRoute>
       },
       {
         path: 'manageMembers',
-        element: <ManageMembers />
+        element: <PrivateRoute><ManageMembers /></PrivateRoute>
       },
       {
         path: 'agreementsRequest',
-        element: <AgreementsRequest />
+        element: <PrivateRoute><AgreementsRequest /></PrivateRoute>
 
       },
       {
         path: 'manageCoupons',
-        element: <ManageCoupons />
+        element: <PrivateRoute><ManageCoupons /></PrivateRoute>
 
       },
     ]

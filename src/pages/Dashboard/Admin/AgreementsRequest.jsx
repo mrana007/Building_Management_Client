@@ -15,9 +15,8 @@ const AgreementsRequest = () => {
     },
   });
 
-  const handleAccept = ({agreementId, userEmail}) =>{
+  const handleAccept = ({agreement, agreementId, userEmail}) =>{
     const res =axiosSecure.patch(`/agreement/status/${agreementId}`)
-
     const response =axiosSecure.patch(`/users/role/${userEmail}`)
     if(res && response){
         refetch();
@@ -25,6 +24,30 @@ const AgreementsRequest = () => {
             position: "top-end",
             icon: "success",
             title: "Agreement request accepted",
+            showConfirmButton: false,
+            timer: 2500
+          });
+    }
+    const date = new Date();
+    const formattedDate = date.toISOString().split("T")[0];
+    const {floorNo, block, apartmentNo} = agreement;
+    const agreementInfor ={
+        email: userEmail,
+        floorNo,
+        block,
+        apartmentNo,
+        date: formattedDate,
+    }
+    axiosSecure.post("/agreementInfo", agreementInfor)
+  }
+  const handleReject = id =>{
+    const res =axiosSecure.patch(`/rejectAgreement/status/${id}`)
+    if(res){
+        refetch();
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Agreement request rejected",
             showConfirmButton: false,
             timer: 2500
           });
@@ -69,17 +92,24 @@ const AgreementsRequest = () => {
                 <td>{agreement.date}</td>
                 <td>
                   {
-                    agreement?.status !== "checked" ? <>
-                    <button onClick={()=>handleAccept({agreementId: agreement._id, userEmail: agreement.userEmail })}>
+                    agreement?.status == "pending" ? <>
+                    <button onClick={()=>handleAccept({agreementId: agreement._id, userEmail: agreement.userEmail, agreement })}>
                     {" "}
                     <FcAcceptDatabase className="text-5xl" />{" "}
                   </button>
-                    </>:'checked'
+                    </>:agreement?.status
                     
                   }
                 </td>
                 <td>
-                  <button className="text-red-500 text-4xl">X</button>
+                  {
+                    agreement?.status =="pending" ? <>
+                    <button onClick={()=> handleReject(agreement._id)} className="text-red-500 text-4xl">X</button>
+                    </>
+                    :
+                    "--"
+                    
+                    }
                 </td>
               </tr>
             ))}
