@@ -38,6 +38,7 @@ const AgreementsRequest = () => {
       <h2 className="text-6xl text-center font-extrabold mb-4 md:my-14">
         Agreements Request: {agreements.length}
       </h2>
+      <div className="">
       <div className="overflow-x-auto rounded-2xl">
         <table className="table">
           {/* head */}
@@ -84,6 +85,7 @@ const AgreementsRequest = () => {
             ))}
           </tbody>
         </table>
+      </div>
       </div>
     </>
   );

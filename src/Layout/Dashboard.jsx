@@ -5,11 +5,10 @@ import { MdDashboard } from "react-icons/md";
 import { GrAnnounce } from "react-icons/gr";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
-// import useAdmin from "../hooks/useAdmin";
 
 const DashBoard = () => {
     const [isAdmin] = useAdmin();
-    console.log(isAdmin);
+    // console.log(isAdmin);
 
     return (
         <>

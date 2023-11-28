@@ -13,6 +13,8 @@ import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
 import AgreementsRequest from "../pages/Dashboard/Admin/AgreementsRequest";
 import ManageMembers from "../pages/Dashboard/Admin/ManageMembers";
 import MakeAnnouncements from "../pages/Dashboard/Admin/MakeAnnouncements";
+import Announcements from "../pages/Dashboard/UserProfile/Announcements";
+import ManageCoupons from "../pages/Dashboard/Admin/ManageCoupons";
 
 export const router = createBrowserRouter([
   {
@@ -46,9 +48,14 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: <PrivateRoute><DashBoard /></PrivateRoute>,
     children: [
+      // user dashboard
       {
         path: "userProfile",
         element: <PrivateRoute><UserProfile /></PrivateRoute>
+      },
+      {
+        path: "announcements",
+        element: <Announcements />
       },
       // admin only routes
       {
@@ -67,7 +74,12 @@ export const router = createBrowserRouter([
         path: 'agreementsRequest',
         element: <AgreementsRequest />
 
-      }
+      },
+      {
+        path: 'manageCoupons',
+        element: <ManageCoupons />
+
+      },
     ]
   }
 ]);
