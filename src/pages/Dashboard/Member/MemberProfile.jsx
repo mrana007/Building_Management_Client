@@ -14,7 +14,7 @@ const MemberProfile = () => {
       return res.data;
     },
   });
-  const { date, floorNo, block,apartmentNo } = agreementInfo;
+  const { date, floorNo, block, apartmentNo, rent } = agreementInfo;
 //   console.log(block);
 
   return (
@@ -53,6 +53,9 @@ const MemberProfile = () => {
             </p>
             <p className="text-white text-xl font-bold">
               <span className="text-red-200">Apartment Number:</span> {apartmentNo}
+            </p>
+            <p className="text-white text-xl font-bold">
+              <span className="text-red-200">Rent:</span> $ {rent}
             </p>
             </div>
           </div>

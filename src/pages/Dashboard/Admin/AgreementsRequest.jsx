@@ -30,12 +30,13 @@ const AgreementsRequest = () => {
     }
     const date = new Date();
     const formattedDate = date.toISOString().split("T")[0];
-    const {floorNo, block, apartmentNo} = agreement;
+    const {floorNo, block, apartmentNo, rent} = agreement;
     const agreementInfor ={
         email: userEmail,
         floorNo,
         block,
         apartmentNo,
+        rent,
         date: formattedDate,
     }
     axiosSecure.post("/agreementInfo", agreementInfor)

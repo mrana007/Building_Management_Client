@@ -7,17 +7,30 @@ import Swal from "sweetalert2";
 const ManageMembers = () => {
   const [users, refetch] = useUsers();
   const members = users.filter((user) => user.role == "member");
-  //   console.log(members);
   const axiosSecure = useAxiosSecure();
-
-  const handleRemoveMember = (id) =>{   
-    const res = axiosSecure.patch(`/member/${id}`);
-    if(res){
-        refetch();
-        // TODO: Change Swal
-        Swal.fire("mmmmmmmmmmm");
-    }
-  }
+  const handleRemoveMember = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, remove the member!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const res = axiosSecure.patch(`/member/${id}`);
+        if (res) {
+          refetch();
+          Swal.fire({
+            title: "Deleted!",
+            text: "Member removed successfully.",
+            icon: "success",
+          });
+        }
+      }
+    });
+  };
   return (
     <>
       <Helmet>
@@ -45,7 +58,10 @@ const ManageMembers = () => {
                   <td>{member.name}</td>
                   <td>{member.email}</td>
                   <td>
-                    <button onClick={()=> handleRemoveMember(member._id)} className="text-red-500 pl-2 text-3xl">
+                    <button
+                      onClick={() => handleRemoveMember(member._id)}
+                      className="text-red-500 pl-2 text-3xl"
+                    >
                       {" "}
                       <FaTrash />{" "}
                     </button>
