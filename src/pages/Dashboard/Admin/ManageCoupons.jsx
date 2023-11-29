@@ -6,12 +6,12 @@ const ManageCoupons = () => {
   const handleCoupons = (e) => {
     e.preventDefault();
     const form = e.target;
-    const coupon = form.coupon.value;
+    const code = form.code.value;
     const discount = form.discount.value;
     const description = form.description.value;
-    console.log(coupon, discount, description);
+    console.log(code, discount, description);
     const couponData = {
-      coupon,
+      code,
       discount,
       description,
     };
@@ -65,7 +65,7 @@ const ManageCoupons = () => {
                       </label>
                       <input
                         type="text"
-                        name="coupon"
+                        name="code"
                         placeholder="Enter coupon code"
                         className="input input-bordered text-black w-full"
                         required
@@ -78,7 +78,7 @@ const ManageCoupons = () => {
                         </span>
                       </label>
                       <input
-                        type="text"
+                        type="number"
                         name="discount"
                         placeholder="Enter discount percentage"
                         className="input input-bordered text-black w-full"

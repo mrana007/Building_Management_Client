@@ -17,6 +17,7 @@ import Announcements from "../pages/Dashboard/UserProfile/Announcements";
 import ManageCoupons from "../pages/Dashboard/Admin/ManageCoupons";
 import MemberProfile from "../pages/Dashboard/Member/MemberProfile";
 import MakePayment from "../pages/Dashboard/Member/MakePayment";
+import PaymentsHistory from "../pages/Dashboard/Member/PaymentsHistory";
 
 export const router = createBrowserRouter([
   {
@@ -70,7 +71,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'paymentsHistory',
-        element: <PrivateRoute><MakePayment /></PrivateRoute>
+        element: <PrivateRoute><PaymentsHistory /></PrivateRoute>
       },
       // admin only routes
       {

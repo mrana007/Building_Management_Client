@@ -28,7 +28,7 @@ const Footer = () => {
         </div>
       </nav>
       <aside>
-        <p>Copyright © 2023 - All right reserved by Quantum Tower</p>
+        <p>Copyright © 2023 - All right reserved by Quantum Holdings Limited</p>
       </aside>
     </footer>
     </div>

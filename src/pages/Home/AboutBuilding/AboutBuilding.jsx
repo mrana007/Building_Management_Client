@@ -14,10 +14,10 @@ const AboutBuilding = () => {
             </h3>
             <p className="text-white">
               Apartment Name: Quantum Tower <br />
-              Company Name: Quantum HOLDINGS LIMITED <br />
+              Company Name: Quantum Holdings Limited <br />
               Total Land Area: 09 (Nine) Kathas. Land Ownership 100% Fresh.
               <br />
-              Approved Floor: G + 9 (Ground Floor + Nine Floor Above). <br />
+              Approved Floor: G + 6 (Ground Floor + Six Floor Above). <br />
               100% Ensure Branded Raw Materials. <br />
               Secure Investment. <br />
               Facilities: Gas Connection from TITAS, Water supply from own Deep

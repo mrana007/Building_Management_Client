@@ -13,8 +13,7 @@ const DashBoard = () => {
     const [isAdmin] = useAdmin();
     const [users] = useUsers();
     const members = users.filter(usr=> usr.role == "member" && usr.email == user.email);
-    // console.log(members);
-    const isUser = users.filter(usr=> usr.role == "user" && usr.email == user.email)
+    const isUser = users.filter(usr=> usr.role == "user" && usr.email == user.email);
 
     return (
         <>
@@ -63,9 +62,7 @@ const DashBoard = () => {
                         </li>
                         </>
                          : 
-                         <>
-                         
-                         </>
+                         <></>
                     }
                     {
                         isUser.length>0 ?<>
