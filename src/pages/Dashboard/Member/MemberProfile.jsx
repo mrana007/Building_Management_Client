@@ -26,8 +26,8 @@ const MemberProfile = () => {
         <h2 className="text-6xl text-center font-extrabold mb-4 md:my-14">
           Member Profile
         </h2>
-        <div className="flex flex-col md:flex-row gap-2 justify-center">
-          <div className="flex-1 w-3/4 bg-red-200 rounded-full p-6">
+        <div className="flex flex-col md:flex-row gap-2 justify-center mx-auto">
+          <div className="flex-1 md:w-1/4 bg-red-200 rounded-xl p-6">
             <img
               className="rounded-full justify-center mx-auto"
               src={user?.photoURL}
@@ -40,8 +40,9 @@ const MemberProfile = () => {
               <span className="text-slate-500">Email:</span> {user?.email}
             </p>
           </div>
-          <div className="flex-1 w-3/4 bg-green-800 rounded-3xl p-6">
-            <div className="md:pt-12">
+          <div className="flex-1 md:w-3/4 bg-green-800 rounded-3xl p-6">
+            <div className="md:pt-7">
+                <p className="text-3xl text-orange-300 font-extrabold pb-4">Latest Agreements Info</p>
             <p className="text-white text-xl font-bold">
               <span className="text-red-200">Agreement Accepted date:</span> {date}
             </p>

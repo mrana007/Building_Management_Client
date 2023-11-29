@@ -1,7 +1,8 @@
 import { Helmet } from "react-helmet-async";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const MakePayment = () => {
   const { user } = useAuth();
@@ -14,17 +15,17 @@ const MakePayment = () => {
     },
   });
 
-  const handlePayment = (event) =>{
-    event.preventDefault()
-    const form = event.target;
-    const email = form.email.value; 
-    const floorNo = form.floorNo.value; 
-    const block = form.block.value; 
-    const apartmentNo = form.apartmentNo.value; 
-    const rent = form.rent.value; 
-    const month = form.month.value;
-    console.log(email, floorNo, block, apartmentNo, rent, month);
-  }
+  // const handlePayment = (event) =>{
+  //   event.preventDefault()
+  //   const form = event.target;
+  //   const email = form.email.value; 
+  //   const floorNo = form.floorNo.value; 
+  //   const block = form.block.value; 
+  //   const apartmentNo = form.apartmentNo.value; 
+  //   const rent = form.rent.value; 
+  //   const month = form.month.value;
+  //   console.log(email, floorNo, block, apartmentNo, rent, month);
+  // }
 
   const { email, floorNo, block, apartmentNo, rent } = agreementInfo;
   return (
@@ -37,7 +38,7 @@ const MakePayment = () => {
       </h2>
       <div className="max-w-screen-xl justify-center">
         <div className="card w-3/4 mx-auto shadow-xl bg-slate-500">
-          <form onSubmit={handlePayment} className="py-8 px-8 md:px-16">
+          <form className="py-8 px-8 md:px-16">
             <div className="flex flex-col md:flex-row mx-auto justify-center gap-4">
               <div className="form-control w-full">
                 <label className="label">
@@ -117,13 +118,6 @@ const MakePayment = () => {
                 <label className="label">
                   <span className="label-text text-white text-xl font-semibold">Month</span>
                 </label>
-                {/* <input
-                type="text"
-                name="month"
-                placeholder="Enter Month"
-                className="input input-bordered w-full"
-                required
-              /> */}
                 <select
                   name="month"
                   className="select select-bordered w-full"
@@ -147,8 +141,10 @@ const MakePayment = () => {
                 </select>
               </div>
             </div>
-            <div className="form-control mt-6">
-              <button className="btn bg-red-400 text-white text-2xl md:w-1/4 mx-auto">Pay Now</button>
+            <div className="form-control mt-6 md:w-1/4 mx-auto">
+              <Link to="/dashboard/paymentNow">
+              <button className="btn bg-red-400 text-white text-2xl">Pay Now</button>
+              </Link>
             </div>
           </form>
         </div>

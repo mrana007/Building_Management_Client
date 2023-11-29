@@ -16,8 +16,9 @@ import MakeAnnouncements from "../pages/Dashboard/Admin/MakeAnnouncements";
 import Announcements from "../pages/Dashboard/UserProfile/Announcements";
 import ManageCoupons from "../pages/Dashboard/Admin/ManageCoupons";
 import MemberProfile from "../pages/Dashboard/Member/MemberProfile";
-import MakePayment from "../pages/Dashboard/Member/MakePayment";
+import MakePayment from "../pages/Dashboard/Member/Payment/MakePayment";
 import PaymentsHistory from "../pages/Dashboard/Member/PaymentsHistory";
+import PaymentNow from "../pages/Dashboard/Member/Payment/PaymentNow";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
       {
         path: 'makePayment',
         element: <PrivateRoute><MakePayment /></PrivateRoute>
+      },
+      {
+        path: 'paymentNow',
+        element: <PaymentNow />
       },
       {
         path: 'paymentsHistory',
