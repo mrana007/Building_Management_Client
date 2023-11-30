@@ -72,7 +72,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'paymentNow',
-        element: <PaymentNow />
+        element: <PrivateRoute><PaymentNow /></PrivateRoute>
       },
       {
         path: 'paymentsHistory',

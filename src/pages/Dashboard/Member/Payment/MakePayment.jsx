@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const MakePayment = () => {
   const { user } = useAuth();
@@ -15,19 +16,9 @@ const MakePayment = () => {
     },
   });
 
-  // const handlePayment = (event) =>{
-  //   event.preventDefault()
-  //   const form = event.target;
-  //   const email = form.email.value; 
-  //   const floorNo = form.floorNo.value; 
-  //   const block = form.block.value; 
-  //   const apartmentNo = form.apartmentNo.value; 
-  //   const rent = form.rent.value; 
-  //   const month = form.month.value;
-  //   console.log(email, floorNo, block, apartmentNo, rent, month);
-  // }
-
   const { email, floorNo, block, apartmentNo, rent } = agreementInfo;
+  const [data, setData] = useState();
+
   return (
     <>
       <Helmet>
@@ -38,11 +29,13 @@ const MakePayment = () => {
       </h2>
       <div className="max-w-screen-xl justify-center">
         <div className="card w-3/4 mx-auto shadow-xl bg-slate-500">
-          <form className="py-8 px-8 md:px-16">
+          <form  className="py-8 px-8 md:px-16">
             <div className="flex flex-col md:flex-row mx-auto justify-center gap-4">
               <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text text-white text-xl font-semibold">Email</span>
+                  <span className="label-text text-white text-xl font-semibold">
+                    Email
+                  </span>
                 </label>
                 <input
                   type="email"
@@ -56,7 +49,9 @@ const MakePayment = () => {
               </div>
               <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text text-white text-xl font-semibold">Floor No</span>
+                  <span className="label-text text-white text-xl font-semibold">
+                    Floor No
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -72,7 +67,9 @@ const MakePayment = () => {
             <div className="flex flex-col md:flex-row mx-auto justify-center gap-4">
               <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text text-white text-xl font-semibold">Block Name</span>
+                  <span className="label-text text-white text-xl font-semibold">
+                    Block Name
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -86,7 +83,9 @@ const MakePayment = () => {
               </div>
               <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text text-white text-xl font-semibold">Apartment No</span>
+                  <span className="label-text text-white text-xl font-semibold">
+                    Apartment No
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -102,7 +101,9 @@ const MakePayment = () => {
             <div className="flex flex-col md:flex-row mx-auto justify-center gap-4">
               <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text text-white text-xl font-semibold">Rent</span>
+                  <span className="label-text text-white text-xl font-semibold">
+                    Rent
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -116,9 +117,12 @@ const MakePayment = () => {
               </div>
               <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text text-white text-xl font-semibold">Month</span>
+                  <span className="label-text text-white text-xl font-semibold">
+                    Month
+                  </span>
                 </label>
                 <select
+                onChange={(e) =>setData(e.target.value)}
                   name="month"
                   className="select select-bordered w-full"
                   required
@@ -142,8 +146,10 @@ const MakePayment = () => {
               </div>
             </div>
             <div className="form-control mt-6 md:w-1/4 mx-auto">
-              <Link to="/dashboard/paymentNow">
-              <button className="btn bg-red-400 text-white text-2xl">Pay Now</button>
+              <Link to={`/dashboard/paymentNow?rent=${rent}&month=${data}&email=${email}&apartmentNo=${apartmentNo}`}>
+                <button className="btn bg-red-400 text-white text-2xl">
+                  Pay Now
+                </button>
               </Link>
             </div>
           </form>

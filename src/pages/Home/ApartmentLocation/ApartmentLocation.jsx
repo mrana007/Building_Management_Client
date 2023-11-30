@@ -1,4 +1,5 @@
 import { CiLocationOn } from "react-icons/ci";
+import { GiClick } from "react-icons/gi";
 import { Link } from "react-router-dom";
 const ApartmentLocation = () => {
   return (
@@ -25,7 +26,7 @@ const ApartmentLocation = () => {
             <div className="border border-gray-400 rounded-lg px-2 py-4">
               <h2 className="flex items-center text-lg font-medium">
                 <CiLocationOn className="text-2xl font-extrabold mr-2" />
-                Location
+                Location <GiClick className="ml-2 text-2xl font-bold text-slate-300"/>
               </h2>
               <p>Gulshan, Dhaka, Bangladesh</p>
             </div>
