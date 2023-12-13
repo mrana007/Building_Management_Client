@@ -19,6 +19,7 @@ import MemberProfile from "../pages/Dashboard/Member/MemberProfile";
 import MakePayment from "../pages/Dashboard/Member/Payment/MakePayment";
 import PaymentsHistory from "../pages/Dashboard/Member/PaymentsHistory";
 import PaymentNow from "../pages/Dashboard/Member/Payment/PaymentNow";
+import ApartmentStructure from "../pages/ApartmentStructure/ApartmentStructure";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
         {
           path: "apartment",
           element: <Apartment />
+        },
+        {
+          path: "structure",
+          element: <ApartmentStructure />
         }
     ]
   },

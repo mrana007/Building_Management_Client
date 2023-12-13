@@ -11,7 +11,7 @@ const ApartmentLocation = () => {
         thrilled to have you here. If you ever need anything, <br /> our team is
         here to help. Enjoy the comfort and convenience of your new space at...
       </p>
-      <div className="flex flex-col gap-3 justify-center mx-auto lg:relative px-4">
+      <div className="flex flex-col-reverse md:flex-col gap-3 justify-center mx-auto lg:relative px-4">
         <div className="card lg:w-1/3 bg-green-50 shadow-2xl lg:absolute lg:top-40 lg:right-12">
           <div className="card-body">
             <h2 className="card-title">

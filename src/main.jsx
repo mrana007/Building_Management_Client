@@ -5,6 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./Routes/Routes";
 import AuthProvider from "./providers/AuthProvider";
 import { HelmetProvider } from "react-helmet-async";
+import { Toaster } from "react-hot-toast";
 import {
   QueryClient,
   QueryClientProvider,
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <QueryClientProvider client={queryClient}>
         <HelmetProvider>
           <RouterProvider router={router} />
+          <Toaster></Toaster>
         </HelmetProvider>
       </QueryClientProvider>
     </AuthProvider>

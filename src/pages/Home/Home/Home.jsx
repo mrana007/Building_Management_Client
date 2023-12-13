@@ -4,6 +4,7 @@ import AboutBuilding from "../AboutBuilding/AboutBuilding";
 import ApartmentLocation from "../ApartmentLocation/ApartmentLocation";
 import Banner from "../Banner/Banner";
 import Coupons from "../Coupons/Coupons";
+import ContactUs from "../ContactUs/ContactUs";
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
             <Coupons />
             <AboutBuilding />
             <ApartmentLocation />
+            <ContactUs />
             <Footer />
         </div>
     );

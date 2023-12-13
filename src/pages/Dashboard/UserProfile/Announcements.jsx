@@ -16,10 +16,10 @@ const Announcements = () => {
       <Helmet>
         <title>Quantum Tower | Dashboard | Announcements</title>
       </Helmet>
-      <h2 className="text-6xl text-center font-extrabold mb-4 md:my-14">
-        Total Announcements: {announcements.length}
+      <h2 className="text-4xl md:text-6xl text-center font-extrabold mb-4 md:my-14">
+        Announcements: {announcements.length}
       </h2>
-      <div className="max-w-screen-lg mx-auto">
+      <div className="max-w-screen-xl mx-auto">
         <div className="overflow-x-auto rounded-2xl">
           <table className="table">
             {/* head */}

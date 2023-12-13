@@ -15,9 +15,9 @@ const AgreementsRequest = () => {
     },
   });
 
-  const handleAccept = ({agreement, agreementId, userEmail}) =>{
-    const res =axiosSecure.patch(`/agreement/status/${agreementId}`)
-    const response =axiosSecure.patch(`/users/role/${userEmail}`)
+  const handleAccept = async ({agreement, agreementId, userEmail}) =>{
+    const res = await axiosSecure.patch(`/agreement/status/${agreementId}`)
+    const response =await axiosSecure.patch(`/users/role/${userEmail}`)
     if(res && response){
         refetch();
         Swal.fire({
@@ -31,7 +31,7 @@ const AgreementsRequest = () => {
     const date = new Date();
     const formattedDate = date.toISOString().split("T")[0];
     const {floorNo, block, apartmentNo, rent} = agreement;
-    const agreementInfor ={
+    const agreementInformation ={
         email: userEmail,
         floorNo,
         block,
@@ -39,10 +39,10 @@ const AgreementsRequest = () => {
         rent,
         date: formattedDate,
     }
-    axiosSecure.post("/agreementInfo", agreementInfor)
+    axiosSecure.post("/agreementInfo", agreementInformation)
   }
-  const handleReject = id =>{
-    const res =axiosSecure.patch(`/rejectAgreement/status/${id}`)
+  const handleReject = async (id) =>{
+    const res = await axiosSecure.patch(`/rejectAgreement/status/${id}`)
     if(res){
         refetch();
         Swal.fire({
