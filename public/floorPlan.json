@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "image": "https://i.ibb.co/yyZv8pC/0B1.png",
+        "name": "Alpha",
+        "beds": 2,
+        "baths": 2,
+        "sqf": 1200
+    },
+    {
+        "id": 2,
+        "image": "https://i.ibb.co/XDpYHyp/0B2.png",
+        "name": "Beta",
+        "beds": 1,
+        "baths": 1,
+        "sqf": 800
+    },
+    {
+        "id": 3,
+        "image": "https://i.ibb.co/mFw3xNj/1B1.png",
+        "name": "Gamma",
+        "beds": 3,
+        "baths": 2,
+        "sqf": 1600
+    },
+    {
+        "id": 4,
+        "image": "https://i.ibb.co/tzfV2gc/1B3.png",
+        "name": "Delta",
+        "beds": 2,
+        "baths": 1,
+        "sqf": 1000
+    },
+    {
+        "id": 5,
+        "image": "https://i.ibb.co/LRFkmLH/1GF1.png",
+        "name": "Epsilon",
+        "beds": 4,
+        "baths": 3,
+        "sqf": 2500
+    },
+    {
+        "id": 6,
+        "image": "https://i.ibb.co/KsKQB9L/2B1.png",
+        "name": "Zeta",
+        "beds": 6,
+        "baths": 5,
+        "sqf": 5000
+    },
+    {
+        "id": 7,
+        "image": "https://i.ibb.co/592qgBY/2B2.png",
+        "name": "Lambda",
+        "beds": 1,
+        "baths": 1,
+        "sqf": 700
+    }
+]
