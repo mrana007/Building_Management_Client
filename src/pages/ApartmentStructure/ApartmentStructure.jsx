@@ -7,7 +7,7 @@ const ApartmentStructure = () => {
   const [floorPlans, setFloorPlans] = useState([{}]);
   const [params] = useSearchParams();
     const name = params.get('name');
-//   console.log(floorPlans);
+
   useEffect(() => {
     fetch("floorPlan.json")
       .then((res) => res.json())

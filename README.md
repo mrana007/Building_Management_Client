@@ -18,5 +18,7 @@
 - in member dashboard he will see the agreement accepted details
 - he also can payment the agreement rent from here
 - if a member apply apply coupon he will get discount
--that's all from this project 
+-that's all from this project.
+- any user can send message for query about apartments
+- In Apartment structure user will show the details 
 
